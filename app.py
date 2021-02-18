@@ -25,7 +25,7 @@ def create_mongodatabase():
             db_tweets = connection.cloud_native.tweets
             db_api = connection.cloud_native.apirelease
 
-            db.insert({
+            db.insert_one({
             "email": "leolaLguertin@teleworm.us",
             "id": 5,
             "name": "Leola L. Guertin",
@@ -33,7 +33,7 @@ def create_mongodatabase():
             "username": "Tagning"
             })
 
-            db.insert({
+            db.insert_one({
             "email": "eric.strom@google.com",
             "id": 33,
             "name": "Eric stromberg",
@@ -41,20 +41,20 @@ def create_mongodatabase():
             "username": "eric.strom"
             })
 
-            db_tweets.insert({
+            db_tweets.insert_one({
             "body": "New blog post,Launch your app with the AWS Startup Kit! #AWS",
             "id": 18,
             "timestamp": "2017-03-11T06:39:40Z",
             "tweetedby": "eric.strom"
             })
 
-            db_api.insert( {
+            db_api.insert_one( {
               "buildtime": "2017-01-01 10:00:00",
               "links": "/api/v1/users",
               "methods": "get, post, put, delete",
               "version": "v1"
             })
-            db_api.insert( {
+            db_api.insert_one( {
               "buildtime": "2017-02-11 10:00:00",
               "links": "api/v2/tweets",
               "methods": "get, post",
@@ -114,7 +114,7 @@ def add_user(new_user):
     # print (api_list)
     if api_list == []:
     #    print(new_user)
-       db.insert_one(new_user)
+       db.insert_one_one(new_user)
        return "Success"
     else :
        abort(409)
@@ -156,7 +156,7 @@ def add_tweet(new_tweet):
     if api_list == []:
        abort(404)
     else:
-        db_tweet.insert_one(new_tweet)
+        db_tweet.insert_one_one(new_tweet)
         return "Success"
 
 def upd_user(user):
