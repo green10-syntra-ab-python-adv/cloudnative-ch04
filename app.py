@@ -18,6 +18,7 @@ CORS(app)
 
 # Initialize Database
 def create_mongodatabase():
+    print("About to create MongoDB database")
     try:
         dbnames = connection.list_database_names()
         if 'cloud_native' not in dbnames:
@@ -114,7 +115,7 @@ def add_user(new_user):
     # print (api_list)
     if api_list == []:
     #    print(new_user)
-       db.insert_one_one(new_user)
+       db.insert_one(new_user)
        return "Success"
     else :
        abort(409)
