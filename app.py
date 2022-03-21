@@ -157,7 +157,7 @@ def add_tweet(new_tweet):
     if api_list == []:
        abort(404)
     else:
-        db_tweet.insert_one_one(new_tweet)
+        db_tweet.insert_one(new_tweet)
         return "Success"
 
 def upd_user(user):
